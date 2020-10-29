@@ -36,12 +36,14 @@ RUN apt-get clean && apt-get update && apt-get install -y \
 # Add xindy-2.2 instead of makeindex.
 ADD ./packages/xindy-2.2-rc2-linux.tar.gz /opt
 ENV PATH="/opt/xindy-2.2/bin:${PATH}"
-
+# Add fonts required for latex files
 COPY ./fonts/ /usr/local/share/fonts
+# Add dependencies
 COPY ./dependencies/ /usr/share/doc/texlive-doc/latex/
+# Add dependencies
 COPY ./dependencies/ /usr/share/texlive/texmf-dist/tex/latex/
 COPY ./util/docker-entrypoint.sh /
-
+# Refresh Latex to find dependendant libraries
 RUN texhash
 
 EXPOSE 2700
