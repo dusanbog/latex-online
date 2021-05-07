@@ -67,6 +67,9 @@ def main():
         '--latex-cmd', metavar='CMD', default='pdflatex',
         help='Latex command (default: %(default)s)')
     arg_parser.add_argument(
+        '--shell-escape', metavar='--shell-escape',
+        help='Trust all libraries')        
+    arg_parser.add_argument(
         '--latex-args', metavar='ARGS', type=arg_parser_shlex,
         help='Additional command-line arguments for latex.'
         ' This will be parsed and split using POSIX shell rules.')
